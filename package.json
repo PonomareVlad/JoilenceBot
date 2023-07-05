@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "grammy": "^1.17.1",
+    "litagrammy": "^0.0.4",
     "vercel-grammy": "^0.1.0"
   },
   "devDependencies": {

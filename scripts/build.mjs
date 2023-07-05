@@ -1,5 +1,5 @@
 import {getURL} from "vercel-grammy";
-import {bot, secretToken} from "../src/bot.mjs";
+import {bot, secretToken, i18n} from "../src/bot.mjs";
 
 const {VERCEL_ENV} = process.env;
 
@@ -28,3 +28,20 @@ if (await bot.api.setWebhook(url, options)) {
     console.info("Secret token:", secretToken);
 
 }
+
+const {
+    locales,
+    defaultLocale
+} = i18n.options;
+
+await Promise.all(Object.keys(locales).flatMap(locale => {
+
+    const language_code = locale === defaultLocale ? undefined : locale;
+
+    return [
+        bot.api.setMyName(i18n.translate(locale, "name").trim(), {language_code}),
+        bot.api.setMyShortDescription(i18n.translate(locale, "short").trim(), {language_code}),
+        bot.api.setMyDescription(i18n.translate(locale, "description").trim(), {language_code}),
+    ];
+
+}));
