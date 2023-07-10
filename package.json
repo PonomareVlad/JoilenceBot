@@ -11,7 +11,7 @@
     "start": "node --watch -r dotenv/config scripts/start.mjs"
   },
   "dependencies": {
-    "grammy": "^1.17.1",
+    "grammy": "^1.17.2",
     "litagrammy": "^0.0.4",
     "vercel-grammy": "^0.1.0"
   },
